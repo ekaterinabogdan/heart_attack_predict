@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+joblib
+pandas
+numpy
+catboost
+
+
+pip install -r requirements.txt
