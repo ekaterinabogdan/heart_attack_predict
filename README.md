@@ -53,25 +53,25 @@ Stress Level
 __init__(self, model_path: str, threshold: float = 0.33)
 Загружает обученную модель из файла.
 
-model_path: путь к .joblib файлу.
+__init__(model_path: str)
+Загружает модель из файла.
 
-threshold: порог для классификации (по умолчанию 0.33).
+add_new_features(df: pd.DataFrame) -> pd.DataFrame
 
-add_new_features(self, df: pd.DataFrame) -> pd.DataFrame
-Добавляет инженерные признаки в датафрейм:
+Добавляет признаки:
 
-Логарифмы триглицеридов, холестерина, сахара
+Логарифмы: log_blood_sugar, log_trig, log_chol
+Соотношение давлений: bp_ratio
 
-Соотношение систолического и диастолического давления
+predict_from_file(data_path: str) -> dict
+Загружает CSV, применяет трансформации и возвращает:
 
-predict_from_file(self, filepath: str) -> dict
-Загружает CSV-файл, обрабатывает данные, и возвращает:
-
-predictions: список 0/1 предсказаний
+predictions: метки 0/1
 
 probabilities: вероятности
 
-ids: идентификаторы
+ids: ID пациентов
+
 
 ## Запуск приложения
 1. Установить зависимости:
@@ -80,7 +80,7 @@ ids: идентификаторы
     uvicorn main:app --reload
         
 3.Отправить POST-запрос с файлом:
-    curl -X POST "http://127.0.0.1:8000/predict" \
+  curl -X POST "http://127.0.0.1:8000/predict" \
   -H "accept: application/json" \
   -H "Content-Type: multipart/form-data" \
   -F "file=@your_test_file.csv"
