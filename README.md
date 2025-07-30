@@ -85,4 +85,9 @@ ids: ID пациентов
   -H "Content-Type: multipart/form-data" \
   -F "file=@your_test_file.csv"
 
+Удалённый доступ (через Render или другой хостинг):
+curl -X POST "https://heart-attack-predict-duhc.onrender.com/predict" \
+  -H "accept: application/json" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@your_test_file.csv"
 ```
