@@ -1,9 +1,8 @@
 fastapi
 uvicorn
-joblib
 pandas
 numpy
 catboost
+scikit-learn
+joblib
 
-
-pip install -r requirements.txt
